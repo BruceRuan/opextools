@@ -10,11 +10,13 @@ buildscript {
 	}
 }
 
+apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot' 
 
-jar {
+
+war {
 	baseName = 'opextools'
 	version = '0.0.1-SNAPSHOT'
 }
@@ -27,6 +29,10 @@ repositories {
 
 
 dependencies {
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+	
+	compile('javax.servlet:jstl')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
